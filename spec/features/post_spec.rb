@@ -15,6 +15,7 @@ describe 'navigate' do
 
   describe 'creation' do
       before do
+        user = 
         visit new_post_path
       end
 
