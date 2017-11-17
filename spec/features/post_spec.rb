@@ -36,6 +36,16 @@ describe 'navigate' do
     end
   end
 
+  describe 'delete' do
+    it 'can be delete' do
+      @post = FactoryBot.create(:post)
+      visit posts_path
+
+      click_link("delete_post_#{@post.id}_from_index")
+      expect(page.status_code).to eq(200)
+    end
+  end
+
   describe 'creation' do
       before do
         visit new_post_path
@@ -63,25 +73,25 @@ describe 'navigate' do
   end
 
     describe 'edit' do
-    before do
-      @post = FactoryBot.create(:post)
-    end
+      before do
+        @post = FactoryBot.create(:post)
+      end
 
-    it 'can be reached by clicking edit on index page' do
-      visit posts_path
+      it 'can be reached by clicking edit on index page' do
+        visit posts_path
 
-      click_link("edit_#{@post.id}")
-      expect(page.status_code).to eq(200)
-    end
+        click_link("edit_#{@post.id}")
+        expect(page.status_code).to eq(200)
+      end
 
-    it 'can be edited' do
-      visit edit_post_path(@post)
+      it 'can be edited' do
+        visit edit_post_path(@post)
 
-      fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: "Edited content"
-      click_on "Save"
+        fill_in 'post[date]', with: Date.today
+        fill_in 'post[rationale]', with: "Edited content"
+        click_on "Save"
 
-      expect(page).to have_content("Edited content")
-    end
+        expect(page).to have_content("Edited content")
+      end
   end
 end

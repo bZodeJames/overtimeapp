@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require bootstrap
+//= require gritter
 //= require rails-ujs
 //= require jquery_ujs
 //= require turbolinks
