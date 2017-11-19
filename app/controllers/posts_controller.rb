@@ -33,8 +33,9 @@ class PostsController < ApplicationController
     def show
     end
 
-    def destory
+    def destroy
         @post.delete
+        redirect_to posts_path, notice: 'Your post was deleted successfully'
     end
 
 
