@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
+    
     def index
         @posts = Post.all
     end
@@ -15,7 +16,7 @@ class PostsController < ApplicationController
         if @post.save
             redirect_to @post, notice: "Your post was created successfully"
         else
-        render :new
+            render :new
         end
     end
 
@@ -42,11 +43,10 @@ class PostsController < ApplicationController
 private
 
     def post_params
-        params.require(:post).permit(:date, :rationale)
+        params.require(:post).permit(:date, :rationale, :status)
     end
 
     def set_post
         @post = Post.find(params[:id])
-        redirect_to posts_path, notice: 'Your post deleted'
     end
 end
