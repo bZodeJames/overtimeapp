@@ -12,15 +12,25 @@
     <%= post.user.full_name %>
   </td>
   <td>
-    <%= truncate(post.rationale) %>
+    <%= link_to truncate(post.rationale), post %>
   </td>
   <td>
     <%= status_label post.status %>
   </td>
   <td>
-    <%= link_to 'Edit', edit_post_path(post), id: "edit_#{post.id}" if policy(post).update? %>
+    
   </td>
-  <td>
-    <%= link_to 'Delete', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Are you sure?' } %>
+  <td class="dropdown">
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle" ><i class="fa fa-ellipsis-v my-menu" aria-hidden="true"></i></a>
+		<ul class="dropdown-menu">
+			<li>
+        <%= link_to 'Edit', edit_post_path(post), id: "edit_#{post.id}" if policy(post).update? %>
+      </li>
+			<li>
+				<%= link_to 'Delete', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Are you sure?' } %>
+			</li>
+
+
+
   </td>
 </tr>
