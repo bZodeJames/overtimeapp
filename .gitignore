@@ -18,3 +18,4 @@
 
 .byebug_history
 secrets.yml
+/.env
