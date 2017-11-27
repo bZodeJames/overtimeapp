@@ -2,7 +2,8 @@
             password: "asdfasdf", 
             password_confirmation: "asdfasdf", 
             first_name: "James", 
-            last_name: "Briggs"
+            last_name: "Briggs",
+            phone: "8014717493"
             )
 
 AdminUser.create!(email: "admin@test.com", 
@@ -10,6 +11,7 @@ AdminUser.create!(email: "admin@test.com",
             password_confirmation: "asdfasdf", 
             first_name: "James", 
             last_name: "Admin"
+            phone: "8014717493"
             )
 
 100.times do |post|
