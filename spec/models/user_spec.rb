@@ -21,7 +21,12 @@ RSpec.describe User, type: :model do
 		end
 
 		it "cannot be created without phone" do
-			@user.phone = nil
+			@user.phone = 'mygreatstr'
+			expect(@user).to_not be_valid
+		end
+
+		it 'requires the phone attr to only have 10 chars' do
+			@user.phone = '12345678901'
 			expect(@user).to_not be_valid
 		end
 	end
