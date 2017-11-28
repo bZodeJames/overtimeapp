@@ -1,3 +1,13 @@
+AdminUser.create!(email: "admin@test.com", 
+            password: "asdfasdf", 
+            password_confirmation: "asdfasdf", 
+            first_name: "James", 
+            last_name: "Admin",
+            phone: "8014717493"
+            )
+
+puts "Created Admin User"
+
 @user = User.create!(email: "test@test.com", 
             password: "asdfasdf", 
             password_confirmation: "asdfasdf", 
@@ -6,13 +16,7 @@
             phone: "8014717493"
             )
 
-AdminUser.create!(email: "admin@test.com", 
-            password: "asdfasdf", 
-            password_confirmation: "asdfasdf", 
-            first_name: "James", 
-            last_name: "Admin"
-            phone: "8014717493"
-            )
+puts "Created standard User"            
 
 100.times do |post|
   Post.create!(date: Date.today, 
@@ -21,3 +25,14 @@ AdminUser.create!(email: "admin@test.com",
             overtime_request: 2.5
             )
 end
+
+puts "100 Posts have been created"
+
+100.times do |audit_log|
+  AuditLog.create!(user_id: @user.id, 
+                  status: 0, 
+                  start_date: (Date.today - 6.days)
+                  )
+end
+
+puts "100 Audit logs have been created"
